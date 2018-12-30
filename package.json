@@ -1,0 +1,23 @@
+{
+  "name": "story-books-app",
+  "version": "1.0.0",
+  "description": "App to share public or write private stories",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anmolmalhotra97/Story-Books-WebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anmolmalhotra97/Story-Books-WebApp/issues"
+  },
+  "homepage": "https://github.com/anmolmalhotra97/Story-Books-WebApp#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
+  }
+}
