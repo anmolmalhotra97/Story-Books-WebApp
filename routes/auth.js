@@ -11,6 +11,8 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
+    console.log(req.method + "    " + req.url);
+
     // Successful authentication, redirect home.
     res.redirect("/dashboard");
   }
@@ -18,6 +20,7 @@ router.get(
 
 router.get("/verify", (req, res) => {
   if (req.user) {
+    console.log(req.method + "    " + req.url);
     console.log(req.user);
   } else {
     console.log("not auth");
@@ -25,6 +28,8 @@ router.get("/verify", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+  console.log(req.method + "    " + req.url);
+
   req.logout();
   res.redirect("/");
 });
