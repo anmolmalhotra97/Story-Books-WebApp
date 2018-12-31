@@ -48,6 +48,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Set global variables
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 // Use Routes
 app.use("/auth", auth);
 
