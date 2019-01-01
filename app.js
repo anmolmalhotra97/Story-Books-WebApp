@@ -1,13 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const path = require("path");
 
-//load user model
+//load model
 require("./models/user");
+require("./models/story");
+
 // Passport Config
 require("./config/passport")(passport);
 
@@ -18,6 +21,9 @@ const stories = require("./routes/stories");
 
 //load keys file
 const keys = require("./config/keys");
+
+//Handlebars helpers
+const { truncate, striptags, formatDate } = require("./helpers/hbs");
 
 //Map global promises
 mongoose.Promise = global.Promise;
@@ -35,10 +41,21 @@ mongoose
 
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 //Handlebars Middleware
 app.engine(
   "handlebars",
   exphbs({
+    helpers: {
+      truncate: truncate,
+      striptags: striptags,
+      formatDate: formatDate
+    },
     defaultLayout: "main"
   })
 );
