@@ -24,7 +24,13 @@ const stories = require("./routes/stories");
 const keys = require("./config/keys");
 
 //Handlebars helpers
-const { truncate, striptags, formatDate, select } = require("./helpers/hbs");
+const {
+  truncate,
+  striptags,
+  formatDate,
+  select,
+  editIcon
+} = require("./helpers/hbs");
 
 //Map global promises
 mongoose.Promise = global.Promise;
@@ -59,7 +65,8 @@ app.engine(
       truncate: truncate,
       striptags: striptags,
       formatDate: formatDate,
-      select: select
+      select: select,
+      editIcon: editIcon
     },
     defaultLayout: "main"
   })
